@@ -9,7 +9,7 @@
 				"description": "Base URL for Template Files",
 				"artifactsBaseUrl": ""
 			},
-			"defaultValue": "https://raw.githubusercontent.com/Microsoft/openshift-container-platform/azurestack-release-3.11"
+			"defaultValue": "https://raw.githubusercontent.com/michaelt42/openshift-container-platform/azurestack-release-3.11"
 		},
 		"_artifactsLocationSasToken": {
           "type": "securestring",
