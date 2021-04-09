@@ -9,7 +9,7 @@
 				"description": "Base URL for Template Files",
 				"artifactsBaseUrl": ""
 			},
-			"defaultValue": "https://raw.githubusercontent.com/michaelt42/openshift-container-platform/azurestack-release-3.11"
+			"defaultValue": "https://raw.githubusercontent.com/michaelt42/openshift-container-platform/azuretest"
 		},
 		"_artifactsLocationSasToken": {
           "type": "securestring",
@@ -1015,6 +1015,7 @@
 	},
 	"resources": [
 		{ 
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "pid-5c55d719-e293-4b46-8d7b-9c6221a227e4",
 			"properties": {
@@ -1361,7 +1362,7 @@
 			},
 			"properties": {
 				"platformFaultDomainCount": "[variables(variables('platformFaultDomainCount'))]",
-				"platformUpdateDomainCount": "5"
+				"platformUpdateDomainCount": 5
 			},
 			"tags": {
 				"displayName": "[variables('availabilitySetArray')[copyIndex()].tagName]",
@@ -1384,7 +1385,7 @@
 			},
 			"properties": {
 				"platformFaultDomainCount": "[variables(variables('platformFaultDomainCount'))]",
-				"platformUpdateDomainCount": "5"
+				"platformUpdateDomainCount": 5
 			},
 			"tags": {
 				"displayName": "CnsAvailabilitySet",
@@ -1696,6 +1697,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "bastionVmDeployment",
 			"dependsOn": [
@@ -1769,6 +1771,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('masterVmDeployment', padLeft(add(copyIndex(), 1), 2, '0'))]",
 			"dependsOn": [
@@ -1862,6 +1865,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('infraVmDeployment', padLeft(add(copyIndex(), 1), 2, '0'))]",
 			"dependsOn": [
@@ -1955,6 +1959,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('nodeVmDeployment', padLeft(add(copyIndex(), 1), 2, '0'))]",
 			"dependsOn": [
@@ -2048,6 +2053,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"condition": "[equals(parameters('enableCNS'), 'true')]",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('cnsVmDeployment', padLeft(add(copyIndex(), 1), 2, '0'))]",
@@ -2146,6 +2152,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "bastionPrep",
 			"dependsOn": [
@@ -2270,6 +2277,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('masterPrep', padLeft(add(copyIndex(), 1), 2, '0'))]",			
 			"dependsOn": [
@@ -2324,6 +2332,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('InfraPrep', padLeft(add(copyIndex(), 1), 2, '0'))]",
 			"dependsOn": [
@@ -2375,6 +2384,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"condition": "[equals(parameters('enableCNS'), 'true')]",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('CNSPrep', padLeft(add(copyIndex(), 1), 2, '0'))]",
@@ -2427,6 +2437,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"type": "Microsoft.Resources/deployments",
 			"name": "[concat('NodePrep', padLeft(add(copyIndex(), 1), 2, '0'))]",
 			"dependsOn": [
@@ -2478,6 +2489,7 @@
 				}
 			}
 		}, {
+			"apiVersion": "2019-05-01",
 			"condition": "[equals(parameters('automaticDeployment'), 'automatic')]",
 			"type": "Microsoft.Resources/deployments",
 			"name": "OpenShiftDeployment",
