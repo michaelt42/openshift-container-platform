@@ -31,36 +31,36 @@ rm -f /etc/yum.repos.d/rh-cloud.repo
 sleep 10
 
 # Register Host with Cloud Access Subscription
-echo $(date) " - Register host with Cloud Access Subscription"
-
-subscription-manager register --force --username="$USERNAME_ORG" --password="$PASSWORD_ACT_KEY" || subscription-manager register --force --activationkey="$PASSWORD_ACT_KEY" --org="$USERNAME_ORG"
-RETCODE=$?
-
-if [ $RETCODE -eq 0 ]
-then
-    echo "Subscribed successfully"
-elif [ $RETCODE -eq 64 ]
-then
-    echo "This system is already registered."
-else
-    echo "Incorrect Username / Password or Organization ID / Activation Key specified"
-    exit 3
-fi
-
-subscription-manager attach --pool=$POOL_ID > attach.log
-if [ $? -eq 0 ]
-then
-    echo "Pool attached successfully"
-else
-    grep attached attach.log
-    if [ $? -eq 0 ]
-    then
-        echo "Pool $POOL_ID was already attached and was not attached again."
-    else
-        echo "Incorrect Pool ID or no entitlements available"
-        exit 4
-    fi
-fi
+#echo $(date) " - Register host with Cloud Access Subscription"
+#
+#subscription-manager register --force --username="$USERNAME_ORG" --password="$PASSWORD_ACT_KEY" || subscription-manager register --force --activationkey="$PASSWORD_ACT_KEY" --org="$USERNAME_ORG"
+#RETCODE=$?
+#
+#if [ $RETCODE -eq 0 ]
+#then
+#    echo "Subscribed successfully"
+#elif [ $RETCODE -eq 64 ]
+#then
+#    echo "This system is already registered."
+#else
+#    echo "Incorrect Username / Password or Organization ID / Activation Key specified"
+#    exit 3
+#fi
+#
+#subscription-manager attach --pool=$POOL_ID > attach.log
+#if [ $? -eq 0 ]
+#then
+#    echo "Pool attached successfully"
+#else
+#    grep attached attach.log
+#    if [ $? -eq 0 ]
+#    then
+#        echo "Pool $POOL_ID was already attached and was not attached again."
+#    else
+#        echo "Incorrect Pool ID or no entitlements available"
+#        exit 4
+#    fi
+#fi
 
 # Disable all repositories and enable only the required ones
 echo $(date) " - Disabling all repositories and enabling only the required repos"
